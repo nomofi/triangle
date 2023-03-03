@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>傾きで回転する三角形</title>
+	<style type="text/css">
+		#triangle {
+			width: 0;
+			height: 0;
+			border-left: 50px solid transparent;
+			border-right: 50px solid transparent;
+			border-bottom: 100px solid blue;
+			transform: rotate(0deg);
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			margin-left: -50px;
+			transition: transform 0.1s ease-out;
+		}
+	</style>
+</head>
+<body>
+	<div id="triangle"></div>
+
+	<script type="text/javascript">
+		window.addEventListener('deviceorientation', function(event) {
+			var tilt = Math.round(event.gamma); // ガンマ角を取得
+			document.getElementById('triangle').style.transform = 'rotate(' + tilt + 'deg)'; // 三角形を回転
+		});
+	</script>
+</body>
+</html>
